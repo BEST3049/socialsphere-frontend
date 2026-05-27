@@ -107,15 +107,7 @@ export default function Login() {
               />
             </div>
             <div>
-              <div className="mb-2 flex items-center justify-between">
-                <label className="eyebrow">Password</label>
-                <button
-                  type="button"
-                  className="text-[11px] text-mute hover:text-ink-100"
-                >
-                  Forgot?
-                </button>
-              </div>
+              <label className="eyebrow mb-2 block">Password</label>
               <input
                 type="password"
                 value={password}

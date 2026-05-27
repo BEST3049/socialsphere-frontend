@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { HiOutlineSearch, HiOutlineMenuAlt2 } from 'react-icons/hi';
 
 const pageTitles = {
@@ -9,9 +7,8 @@ const pageTitles = {
   '/messages': { eyebrow: 'Threads', title: 'Messages' },
 };
 
-export default function Navbar({ onMenuClick }) {
+export default function Navbar({ onMenuClick, onOpenSearch }) {
   const location = useLocation();
-  const [focused, setFocused] = useState(false);
 
   const meta =
     pageTitles[location.pathname] ||
@@ -45,26 +42,29 @@ export default function Navbar({ onMenuClick }) {
         </Link>
 
         <div className="ml-auto flex flex-1 items-center justify-end gap-3">
-          <motion.div
-            animate={{ width: focused ? 360 : 220 }}
-            transition={{ type: 'spring', stiffness: 380, damping: 34 }}
-            className="relative hidden sm:block"
+          <button
+            type="button"
+            onClick={onOpenSearch}
+            aria-label="Open search"
+            className="group relative hidden h-9 w-[220px] items-center gap-2 rounded-md border border-white/[0.06] bg-white/[0.02] px-3 text-left text-[13px] text-ink-400 transition-colors hover:border-white/[0.1] hover:bg-white/[0.04] hover:text-ink-200 focus:outline-none focus:ring-1 focus:ring-white/15 sm:flex"
           >
-            <HiOutlineSearch
-              className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400"
-              strokeWidth={1.6}
-            />
-            <input
-              type="text"
-              placeholder="Search"
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
-              className="input-field h-9 rounded-md pl-9 pr-12 text-[13px]"
-            />
-            <kbd className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 rounded-[5px] border border-white/[0.08] bg-white/[0.02] px-1.5 py-0.5 text-[10px] font-mono text-faint">
-              /
-            </kbd>
-          </motion.div>
+            <HiOutlineSearch className="h-4 w-4" strokeWidth={1.6} />
+            <span>Search</span>
+            <span className="ml-auto flex items-center gap-1">
+              <kbd className="rounded-[5px] border border-white/[0.08] bg-white/[0.02] px-1.5 py-0.5 text-[10px] font-mono text-faint">
+                /
+              </kbd>
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={onOpenSearch}
+            aria-label="Open search"
+            className="flex h-9 w-9 items-center justify-center rounded-md text-ink-200 hover:bg-white/[0.05] sm:hidden"
+          >
+            <HiOutlineSearch className="h-5 w-5" strokeWidth={1.6} />
+          </button>
         </div>
       </div>
     </header>

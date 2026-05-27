@@ -138,15 +138,19 @@ export default function PostCard({ post, onUpdate, variant = 'default' }) {
 
           <div className="mt-3 flex items-center gap-1 text-[13px] text-mute">
             <button
+              type="button"
               onClick={handleLike}
-              className="flex items-center gap-1.5 rounded-md px-2 py-1.5 transition hover:bg-rose-400/5 hover:text-rose-300"
+              aria-pressed={liked}
+              aria-label={liked ? 'Unlike' : 'Like'}
+              className={`flex h-9 touch-manipulation items-center gap-1.5 rounded-md px-2.5 transition active:bg-rose-400/10 hover:bg-rose-400/5 hover:text-rose-300 ${
+                liked ? 'text-rose-300' : ''
+              }`}
             >
               <motion.span
                 key={liked ? '1' : '0'}
                 initial={{ scale: 0.7 }}
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', stiffness: 480, damping: 16 }}
-                className={liked ? 'text-rose-300' : ''}
               >
                 {liked ? (
                   <HiHeart className="h-4 w-4" />
@@ -154,20 +158,25 @@ export default function PostCard({ post, onUpdate, variant = 'default' }) {
                   <HiOutlineHeart className="h-4 w-4" strokeWidth={1.6} />
                 )}
               </motion.span>
-              <span className={`tabular-nums ${liked ? 'text-rose-300' : ''}`}>
-                {likeCount}
-              </span>
+              <span className="tabular-nums">{likeCount}</span>
             </button>
 
             <button
+              type="button"
               onClick={() => setShowComments((s) => !s)}
-              className="flex items-center gap-1.5 rounded-md px-2 py-1.5 transition hover:bg-white/[0.04] hover:text-ink-100"
+              aria-expanded={showComments}
+              aria-label="Toggle comments"
+              className="flex h-9 touch-manipulation items-center gap-1.5 rounded-md px-2.5 transition active:bg-white/[0.07] hover:bg-white/[0.04] hover:text-ink-100"
             >
               <HiOutlineChat className="h-4 w-4" strokeWidth={1.6} />
               <span className="tabular-nums">{commentCount}</span>
             </button>
 
-            <button className="ml-auto rounded-md p-1.5 transition hover:bg-white/[0.04] hover:text-ink-100">
+            <button
+              type="button"
+              aria-label="Save"
+              className="ml-auto flex h-9 w-9 touch-manipulation items-center justify-center rounded-md transition active:bg-white/[0.07] hover:bg-white/[0.04] hover:text-ink-100"
+            >
               <HiOutlineBookmark className="h-4 w-4" strokeWidth={1.6} />
             </button>
           </div>

@@ -28,6 +28,13 @@ export default function Sidebar({ isOpen, onClose }) {
 
   const isWide = expanded || isOpen;
 
+  const handlePointerEnter = (e) => {
+    if (e.pointerType === 'mouse') setExpanded(true);
+  };
+  const handlePointerLeave = (e) => {
+    if (e.pointerType === 'mouse') setExpanded(false);
+  };
+
   return (
     <>
       <AnimatePresence>
@@ -44,13 +51,13 @@ export default function Sidebar({ isOpen, onClose }) {
       </AnimatePresence>
 
       <motion.aside
-        onMouseEnter={() => setExpanded(true)}
-        onMouseLeave={() => setExpanded(false)}
+        onPointerEnter={handlePointerEnter}
+        onPointerLeave={handlePointerLeave}
         animate={{ width: isWide ? 232 : 68 }}
-        transition={{ type: 'spring', stiffness: 320, damping: 32 }}
-        className={`fixed left-0 top-0 z-50 flex h-screen flex-col border-r border-white/[0.06] bg-graphite-50/80 backdrop-blur-2xl lg:translate-x-0 ${
+        transition={{ type: 'spring', stiffness: 380, damping: 34 }}
+        className={`fixed left-0 top-0 z-50 flex h-screen touch-manipulation flex-col border-r border-white/[0.06] bg-graphite-50/95 backdrop-blur-2xl lg:translate-x-0 lg:bg-graphite-50/80 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 ease-editorial`}
+        } transition-transform duration-200 ease-out`}
       >
         <div className="flex h-16 items-center px-4 hairline-b">
           <Link to="/" className="flex items-center gap-2.5">

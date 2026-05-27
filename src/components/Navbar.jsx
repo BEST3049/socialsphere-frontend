@@ -20,9 +20,10 @@ export default function Navbar({ onMenuClick, onOpenSearch }) {
     <header className="sticky top-0 z-30 hairline-b bg-graphite-50/70 backdrop-blur-2xl">
       <div className="flex h-16 items-center gap-5 px-4 sm:px-6 lg:px-8">
         <button
+          type="button"
           onClick={onMenuClick}
           aria-label="Open menu"
-          className="lg:hidden -ml-1 flex h-9 w-9 items-center justify-center rounded-md text-ink-200 hover:bg-white/[0.05]"
+          className="lg:hidden -ml-2 flex h-11 w-11 touch-manipulation items-center justify-center rounded-md text-ink-200 transition-colors hover:bg-white/[0.05] active:bg-white/[0.1]"
         >
           <HiOutlineMenuAlt2 className="h-5 w-5" strokeWidth={1.6} />
         </button>
@@ -61,7 +62,7 @@ export default function Navbar({ onMenuClick, onOpenSearch }) {
             type="button"
             onClick={onOpenSearch}
             aria-label="Open search"
-            className="flex h-9 w-9 items-center justify-center rounded-md text-ink-200 hover:bg-white/[0.05] sm:hidden"
+            className="-mr-2 flex h-11 w-11 touch-manipulation items-center justify-center rounded-md text-ink-200 transition-colors hover:bg-white/[0.05] active:bg-white/[0.1] sm:hidden"
           >
             <HiOutlineSearch className="h-5 w-5" strokeWidth={1.6} />
           </button>

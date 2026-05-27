@@ -64,9 +64,22 @@ export default function Login() {
           </p>
         </motion.div>
 
-        <div className="flex items-center justify-between text-[11.5px] text-faint">
-          <span>© Sphere {new Date().getFullYear()}</span>
-          <span>Private by design</span>
+        <div className="space-y-2 text-[11.5px] text-faint">
+          <div className="flex items-center justify-between">
+            <span>© Sphere {new Date().getFullYear()}</span>
+            <span>Private by design</span>
+          </div>
+          <div>
+            Crafted by{' '}
+            <a
+              href="http://dharmeesh.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-200 underline-offset-4 transition-colors hover:text-ink-50 hover:underline"
+            >
+              Dharmeesh Rathod ↗
+            </a>
+          </div>
         </div>
       </section>
 

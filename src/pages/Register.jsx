@@ -145,8 +145,19 @@ export default function Register() {
             Edit your profile, follow conversations and share what matters.
           </p>
         </motion.div>
-        <div className="flex items-center justify-between text-[11.5px] text-faint">
+        <div className="space-y-2 text-[11.5px] text-faint">
           <span>By signing up you agree to keep things kind.</span>
+          <div>
+            Crafted by{' '}
+            <a
+              href="http://dharmeesh.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-200 underline-offset-4 transition-colors hover:text-ink-50 hover:underline"
+            >
+              Dharmeesh Rathod ↗
+            </a>
+          </div>
         </div>
       </section>
     </div>

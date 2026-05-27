@@ -151,6 +151,18 @@ export default function Sidebar({ isOpen, onClose }) {
         </nav>
 
         <div className="p-2 hairline-t">
+          <motion.a
+            href="http://dharmeesh.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            animate={{ opacity: isWide ? 1 : 0 }}
+            transition={{ duration: 0.18 }}
+            className="mb-1 block truncate px-2.5 text-[10.5px] text-faint transition-colors hover:text-ink-100"
+            aria-hidden={!isWide}
+            tabIndex={isWide ? 0 : -1}
+          >
+            Crafted by <span className="text-ink-300">Dharmeesh Rathod</span> ↗
+          </motion.a>
           <div className="flex items-center gap-3 rounded-md px-2 py-2">
             <Link to={`/profile/${user?.username}`} className="shrink-0">
               <Avatar src={user?.avatar} username={user?.username} size="sm" />
